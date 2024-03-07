@@ -4,6 +4,13 @@ import {
   arrayUnshift,
   arrayIndexOf,
   arrayIncludes,
+  arrayMap,
+  arrayFilter,
+  arrayFind,
+  arrayFindIndex,
+  arrayJoin,
+  arraySome,
+  arrayEvery,
 } from './arrays.js';
 
 describe('arrayLength', () => {
@@ -142,5 +149,105 @@ describe('arrayIncludes', () => {
     const expected = false;
     const result = arrayIncludes(x, y, z);
     expect(result).toBe(expected);
+  });
+});
+
+describe('arrayMap', () => {
+  test('it should return [2, 8, 18, 32] when array is [1, 4, 9, 16] and func is (x) => x * 2', () => {
+    const x = [1, 4, 9, 16];
+    const y = (x) => x * 2;
+    const expected = [2, 8, 18, 32];
+    const result = arrayMap(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+  test('it should return [] when array is [] and func is (x) => x * 2', () => {
+    const x = [];
+    const y = (x) => x * 2;
+    const expected = [];
+    const result = arrayMap(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+});
+
+describe('arrayFilter', () => {
+  test('it should return ["exuberant", "destruction", "present"] when array is ["spray", "elite", "exuberant", "destruction", "present"] and func is (word) => word.length > 6)', () => {
+    const x = ['spray', 'elite', 'exuberant', 'destruction', 'present'];
+    const y = (word) => word.length > 6;
+    const expected = ['exuberant', 'destruction', 'present'];
+    const result = arrayFilter(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+  test('it should return [6,7,9,11] when array is [1,3,5,6,7,9,11] and func is (x) => x > 5)', () => {
+    const x = [1, 3, 5, 6, 7, 9, 11];
+    const y = (x) => x > 5;
+    const expected = [6, 7, 9, 11];
+    const result = arrayFilter(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+});
+
+describe('arrayFind', () => {
+  test('it should return 12 when array is [5, 12, 8, 130, 44] and func is (element) => element > 10)', () => {
+    const x = [5, 12, 8, 130, 44];
+    const y = (element) => element > 10;
+    const expected = 12;
+    const result = arrayFind(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+  test('it should return undefined when array is [5, 12, 8, 30, 44] and func is (element) => element > 1000)', () => {
+    const x = [5, 12, 8, 130, 44];
+    const y = (element) => element > 1000;
+    const expected = undefined;
+    const result = arrayFind(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+});
+describe('arrayFindIndex', () => {
+  test('it should return 3 when array is [5, 12, 8, 130, 44] and func is (element) => element > 13)', () => {
+    const x = [5, 12, 8, 130, 44];
+    const y = (element) => element > 13;
+    const expected = 3;
+    const result = arrayFindIndex(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+  test('it should return 1 when array is [5, 12, 8, 130, 44] and func is (element) => element%2 = 0)', () => {
+    const x = [5, 12, 8, 130, 44];
+    const y = (element) => element % 2 === 0;
+    const expected = 1;
+    const result = arrayFindIndex(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+});
+describe('arrayJoin', () => {
+  test('it should return 3 when array is [5, 12, 8, 130, 44] and separator is /', () => {
+    const x = [5, 12, 8, 130, 44];
+    const y = '/';
+    const expected = '5/12/8/130/44';
+    const result = arrayJoin(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+  test('it should return 3 when array is [5, 12, 8, 130, 44] and separator is undefined', () => {
+    const x = [5, 12, 8, 130, 44];
+    const expected = '5,12,8,130,44';
+    const result = arrayJoin(x);
+    expect(result).toStrictEqual(expected);
+  });
+});
+describe.only('arraySome', () => {
+  test('it should return true when array is [1, 2, 3, 4, 5] and function is (element) => element % 2 === 0', () => {
+    const x = [1, 2, 3, 4, 5];
+    const y = (element) => element % 2 === 0;
+    const expected = true;
+    const result = arraySome(x, y);
+    expect(result).toStrictEqual(expected);
+  });
+});
+describe.only('arrayEvery', () => {
+  test('it should return true when array is [1, 2, 3, 4, 5] and function is (currentValue) => currentValue < 40;', () => {
+    const x = [1, 2, 3, 4, 5];
+    const y = (currentValue) => currentValue < 40;
+    const expected = true;
+    const result = arrayEvery(x, y);
+    expect(result).toStrictEqual(expected);
   });
 });

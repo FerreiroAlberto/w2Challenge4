@@ -2,15 +2,15 @@
 
 Continúa el modulo con funciones que repliquen los siguientes métodos de array, sin utilizar ninguno de los métodos o propiedades ya existentes en el prototipo, :
 
-- map
-- filter,
-- find,
-- findIndex,
-- join,
-- includes,
+- map (hecha)
+- filter, (hecha)
+- find, (hecha)
+- findIndex, (hecha)
+- join, (hecha)
+- includes, (hecha)
 - reduce,
-- some,
-- every
+- some, (hecha)
+- every (hecha)
 
   Cualquiera de tus funciones puede usar las que ya hayas creado.​
   ![Cheatsheet](https://raw.githubusercontent.com/alce65/week2-24-1/main/challenges/Screenshot_20220126_170655.png)

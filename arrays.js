@@ -65,3 +65,81 @@ export function arrayIncludes(array, value, start = 0) {
 
   return false;
 }
+
+export function arrayMap(array, func) {
+  const newArray = [];
+  for (const item of array) {
+    const newElement = func(item);
+    arrayPush(newArray, newElement);
+  }
+
+  return newArray;
+}
+
+export function arrayFilter(array, func) {
+  const newArray = [];
+  for (const item of array) {
+    if (func(item)) {
+      arrayPush(newArray, item);
+    }
+  }
+
+  return newArray;
+}
+
+export function arrayFind(array, func) {
+  let result;
+  for (const item of array) {
+    if (func(item)) {
+      result = item;
+      break;
+    }
+  }
+
+  return result;
+}
+
+export function arrayFindIndex(array, func) {
+  let result;
+  for (let i = 0; i < arrayLength(array); i++) {
+    if (func(array[i])) {
+      result = i;
+      break;
+    }
+  }
+
+  return result;
+}
+
+export function arrayJoin(array, separator = ',') {
+  let newString = '';
+  if (arrayLength(array) === 1) {
+    return newString + array[0];
+  }
+
+  for (let i = 0; i < arrayLength(array) - 1; i++) {
+    newString = newString + array[i] + separator;
+  }
+
+  return newString + array[array.length - 1];
+}
+
+export function arraySome(array, func) {
+  for (const item of array) {
+    if (func(item)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export function arrayEvery(array, func) {
+  for (const item of array) {
+    if (!func(item)) {
+      return false;
+    }
+  }
+
+  return true;
+}
