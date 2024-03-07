@@ -233,7 +233,7 @@ describe('arrayJoin', () => {
     expect(result).toStrictEqual(expected);
   });
 });
-describe.only('arraySome', () => {
+describe('arraySome', () => {
   test('it should return true when array is [1, 2, 3, 4, 5] and function is (element) => element % 2 === 0', () => {
     const x = [1, 2, 3, 4, 5];
     const y = (element) => element % 2 === 0;
@@ -242,7 +242,7 @@ describe.only('arraySome', () => {
     expect(result).toStrictEqual(expected);
   });
 });
-describe.only('arrayEvery', () => {
+describe('arrayEvery', () => {
   test('it should return true when array is [1, 2, 3, 4, 5] and function is (currentValue) => currentValue < 40;', () => {
     const x = [1, 2, 3, 4, 5];
     const y = (currentValue) => currentValue < 40;
