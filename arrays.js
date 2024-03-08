@@ -41,9 +41,10 @@ export function arrayIndexOf(array, element, start = 0) {
   for (let i = startPoint; i < arrLength; i++) {
     if (array[i] === element) {
       index = i;
-      return index;
     }
   }
+
+  return index;
 }
 
 export function arrayIncludes(array, value, start = 0) {
